@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<title>Orange!</title>
+	</head>
 	<body>
-		<div class="slidecontainer">
-			<div><div id="hue_num">35</div><input type="range" step="1" min="0" max="359" value="35" class="slider" id="hue"></div>
-			<div><div id="light_num">50</div><input type="range" step="1" min="0" max="100" value="50" class="lightness_slider" id="lightness"></div>
-			<div><div id="sat_num">90</div><input type="range" step="1" min="0" max="100" value="90" class="saturation_slider" id="saturation"></div>
+		<button onclick="myFunction()" style="background-color:rgba(255, 255, 255, 0.25)">Toggle sliders</button>
+
+		<div id="slidecontainer">
+			<div><span>hue:  <div id="hue_num">35</div></span><input type="range" step="1" min="0" max="359" value="35" class="slider" id="hue"></div>
+			<div><span>light:  <div id="light_num">50</div></span><input type="range" step="1" min="0" max="100" value="50" class="lightness_slider" id="lightness"></div>
+			<div><span>saturation:  <div id="sat_num">90</div></span><input type="range" step="1" min="0" max="100" value="90" class="saturation_slider" id="saturation"></div>
 		</div>
 
 		<script>
+
+			function myFunction() {
+				let x = document.getElementById("slidecontainer");
+				
+				if (x.style.display == "none") {
+					x.style.display = "inherit";
+				}
+				else {
+					x.style.display = "none";
+				}				
+			}
+
 			var slider = document.getElementById("hue");
 			var lightness_slider = document.getElementById("lightness");
 			var saturation_slider = document.getElementById("saturation");
@@ -42,18 +59,20 @@
 			body {
 				background-color: rgb(255, 149, 0);
 			}
+			#slidecontainer div {
+				display: flex;
+			}
 			input {
-				background-color: #64646480;
-				width: 97.5%;
-				position: absolute;
-				left: 2%;
+				width: 100%;
 			}
-			#hue_num, #light_num, #sat_num {
+			span {
+				background-color: rgba(255, 255, 255, 0.25);
+				display: flex;
+			}
+			span, span div {
+				margin: 0 6px 0 6px;
+			}
 
-				width: 30px;
-				display: inline;
-				background-color: rgba(255, 255, 255, 0.5);
-			}
 		</style>
 	</body>
 </html>

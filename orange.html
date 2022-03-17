@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<div class="slidecontainer">
+			<div><div id="hue_num">35</div><input type="range" step="1" min="0" max="359" value="35" class="slider" id="hue"></div>
+			<div><div id="light_num">50</div><input type="range" step="1" min="0" max="100" value="50" class="lightness_slider" id="lightness"></div>
+			<div><div id="sat_num">90</div><input type="range" step="1" min="0" max="100" value="90" class="saturation_slider" id="saturation"></div>
+		</div>
+
+		<script>
+			var slider = document.getElementById("hue");
+			var lightness_slider = document.getElementById("lightness");
+			var saturation_slider = document.getElementById("saturation");
+
+			var hue_ = slider.value;
+			var light_ = lightness_slider.value;
+			var sat_ = saturation_slider.value;
+
+			slider.oninput = function haha() {
+				hue_ = slider.value;
+				light_ = lightness_slider.value;
+				sat_ = saturation_slider.value;
+				document.body.style.backgroundColor = "hsl(" + hue_ + ", " + sat_ + "%, " + light_ + "%)";
+				document.getElementById("hue_num").textContent=hue_;
+			}
+			lightness_slider.oninput = function haha() {
+				hue_ = slider.value;
+				light_ = lightness_slider.value;
+				sat_ = saturation_slider.value;
+				document.body.style.backgroundColor = "hsl(" + hue_ + ", " + sat_ + "%, " + light_ + "%)";
+				document.getElementById("light_num").textContent=light_;
+			}
+			saturation_slider.oninput = function haha() {
+				hue_ = slider.value;
+				light_ = lightness_slider.value;
+				sat_ = saturation_slider.value;
+				document.body.style.backgroundColor = "hsl(" + hue_ + ", " + sat_ + "%, " + light_ + "%)";
+				document.getElementById("sat_num").textContent=sat_;
+			}
+		</script>
+		<style>
+			body {
+				background-color: rgb(255, 149, 0);
+			}
+			input {
+				background-color: #64646480;
+				width: 97.5%;
+				position: absolute;
+				left: 2%;
+			}
+			#hue_num, #light_num, #sat_num {
+
+				width: 30px;
+				display: inline;
+				background-color: rgba(255, 255, 255, 0.5);
+			}
+		</style>
+	</body>
+</html>

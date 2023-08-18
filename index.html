@@ -2,78 +2,47 @@
 <html>
 	<head>
 		<title>Orange!</title>
+		<link rel="stylesheet" href="style.css">
 	</head>
-	<body>
-		<button onclick="myFunction()" style="background-color:rgba(255, 255, 255, 0.25)">Toggle sliders</button>
+	<body onload="updateColor(true)">
+		<main>
+			<div id="collapsable">
 
-		<div id="slidecontainer">
-			<div><span>hue:  <div id="hue_num">35</div></span><input type="range" step="1" min="0" max="359" value="35" class="slider" id="hue"></div>
-			<div><span>light:  <div id="light_num">50</div></span><input type="range" step="1" min="0" max="100" value="50" class="lightness_slider" id="lightness"></div>
-			<div><span>saturation:  <div id="sat_num">90</div></span><input type="range" step="1" min="0" max="100" value="90" class="saturation_slider" id="saturation"></div>
-		</div>
+				<table>
+					<tr>
+						<td><p>Hue:</p></td>
+						<td>
+							<span id="hue-value"></span>
+							<input id="hue" type="range" max="360" oninput="updateSlider(this, 'hue-value')">
+						</td>
+					</tr>
 
-		<script>
+					<tr>
+						<td><p>Saturation:</p></td>
+						<td>
+							<span id="sat-value"></span>
+							<input id="sat" type="range" list="0-100" oninput="updateSlider(this, 'sat-value')">
+						</td>
+					</tr>
 
-			function myFunction() {
-				let x = document.getElementById("slidecontainer");
-				
-				if (x.style.display == "none") {
-					x.style.display = "inherit";
-				}
-				else {
-					x.style.display = "none";
-				}				
-			}
+					<tr>
+						<td><p>Light:</p></td>
+						<td>
+							<span id="light-value"></span>
+							<input id="light" type="range" list="0-100" oninput="updateSlider(this, 'light-value')">
+						</td>
+					</tr>
 
-			var slider = document.getElementById("hue");
-			var lightness_slider = document.getElementById("lightness");
-			var saturation_slider = document.getElementById("saturation");
-
-			var hue_ = slider.value;
-			var light_ = lightness_slider.value;
-			var sat_ = saturation_slider.value;
-
-			slider.oninput = function haha() {
-				hue_ = slider.value;
-				light_ = lightness_slider.value;
-				sat_ = saturation_slider.value;
-				document.body.style.backgroundColor = "hsl(" + hue_ + ", " + sat_ + "%, " + light_ + "%)";
-				document.getElementById("hue_num").textContent=hue_;
-			}
-			lightness_slider.oninput = function haha() {
-				hue_ = slider.value;
-				light_ = lightness_slider.value;
-				sat_ = saturation_slider.value;
-				document.body.style.backgroundColor = "hsl(" + hue_ + ", " + sat_ + "%, " + light_ + "%)";
-				document.getElementById("light_num").textContent=light_;
-			}
-			saturation_slider.oninput = function haha() {
-				hue_ = slider.value;
-				light_ = lightness_slider.value;
-				sat_ = saturation_slider.value;
-				document.body.style.backgroundColor = "hsl(" + hue_ + ", " + sat_ + "%, " + light_ + "%)";
-				document.getElementById("sat_num").textContent=sat_;
-			}
-		</script>
-		<style>
-			body {
-				background-color: rgb(255, 149, 0);
-			}
-			#slidecontainer div {
-				display: flex;
-			}
-			input {
-				width: 100%;
-			}
-			span {
-				background-color: rgba(255, 255, 255, 0.25);
-				display: flex;
-			}
-			span, span div {
-				margin: 0 6px 0 6px;
-			}
-
-		</style>
-		<p style="position: absolute; bottom: 0%; left: 50%; color: rgba(255, 255, 255, 0.25);">ver 2 by smurf</p>
+					<datalist id="0-100">
+						<option value="0"></option>
+						<option value="50"></option>
+						<option value="100"></option>
+					</datalist>
+				</table>
+			</div>
+			<br>
+			<button onclick="toggleColapse()">Hide</button>
+		</main>
 	</body>
+	<script src="script.js"></script>
 </html>

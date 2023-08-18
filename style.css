@@ -9,9 +9,9 @@ p {
 
 main {
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translateX(-50%);
     background-color: rgba(100,100,100,0.5);
     padding: 0.75rem 3rem 0.2rem 2.5rem;
     border-radius: 1rem;
@@ -26,6 +26,9 @@ button {
     background-color: rgba(100,100,100,0.25);
     border-radius: 0.2rem;
 }
+button:hover {
+    cursor: pointer;
+}
 td {
     padding-left: 1rem;
 }
@@ -36,4 +39,32 @@ td span {
     min-width: 4ch;
     max-width: 4ch;
     display: inline-block;
+}
+.hiding {
+    animation: mymove 1s ;
+    animation-fill-mode: forwards;
+}
+.showing {
+    animation: mymove 1s;
+    animation-fill-mode: forwards;
+    animation-direction: reverse;
+}
+
+
+@keyframes mymove {
+    0% {
+        scale: 100%;
+        opacity: 100%;
+        display: inherit;
+    }
+    99% {
+        scale: 0%;
+        opacity: 0%;
+        display: inherit;
+    }
+    100% {
+        scale: 0%;
+        opacity: 0%;
+        display: none!important;
+    }
 }

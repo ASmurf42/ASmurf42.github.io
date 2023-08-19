@@ -7,7 +7,7 @@ let satSlider = document.querySelector("#sat");
 let lightSlider = document.querySelector("#light");
 
 let showingMenue;
-
+let interval;
 
 hueNumber.innerHTML = 35;
 satNumber.innerHTML = 90;
@@ -43,31 +43,72 @@ function updateColor(start) {
 }
 
 function toggleColapse() {
-    console.log("hi")
     let container = document.getElementById("collapsable");
 
-
-
-
-    if (showingMenue || showingMenue !== undefined) {
-        console.log("showing")
-        container.classList.toggle("showing");
-        container.classList.toggle("hiding");
-        showingMenue = false;
-    }
-    else if (!showingMenue || showingMenue !== undefined) {
-        console.log("hiding")
-        container.classList.toggle("showing");
-        showingMenue = true;
-
+    if (showingMenue === undefined) {
+        console.log("IT'S UNDEINFED")
+            console.log("hiding")
+            container.classList.toggle("hiding");
+            showingMenue = false;
     }
     else {
-        console.log("else");
+        if (showingMenue) {
+            console.log("hiding")
+            container.classList.toggle("showing");
+            container.classList.toggle("hiding");
+            showingMenue = false;
+        }
+        else {
+            console.log("showing")
+            container.classList.toggle("hiding");
+            container.classList.toggle("showing");
+            showingMenue = true;
+    
+        }
     }
+}
+
+function rainbow(restart) {
+    let speedDial = document.querySelector("#speedSelector");
+    let checkbox = document.querySelector("#checkbox");
+    
+    if (restart) {
+        clearInterval(interval);
+        console.log("restarting")
+    }
+
+    if (checkbox.checked) {
+    
+        speedDial.disabled = false;
+    
+        console.log("starting timer....")
+        interval = setInterval(function () {
+
+            if (!checkbox.checked) {
+                clearInterval(interval);        
+                speedDial.disabled = true;
+            }
+            let tmpX = Number(hueSlider.value)
+            let tmpY = Number(speedDial.value);
+            hueSlider.value = tmpX + Math.round((tmpY + 5)/tmpY); //change the color (adding to the hue)
+            if (hueSlider.value > 359)
+                hueSlider.value = 0;
+            
+            updateColor();
+            document.getElementById("hue-value").innerHTML = hueSlider.value;
+
+        }, speedDial.value);
+    }
+    else {
+        speedDial.disabled = true;
+        clearInterval(interval);
+        console.log("Time's up!");
+    }
+
+
 
 }
 
-
 updateColor(true);
-
+rainbow(true);
 console.log(document.body.style.backgroundColor)

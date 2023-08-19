@@ -5,6 +5,7 @@ body, html {
 }
 p {
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 main {
@@ -41,11 +42,11 @@ td span {
     display: inline-block;
 }
 .hiding {
-    animation: mymove 1s ;
+    animation: mymove 0s ;
     animation-fill-mode: forwards;
 }
 .showing {
-    animation: mymove 1s;
+    animation: mymove 0s;
     animation-fill-mode: forwards;
     animation-direction: reverse;
 }
@@ -53,18 +54,19 @@ td span {
 
 @keyframes mymove {
     0% {
-        scale: 100%;
         opacity: 100%;
         display: inherit;
     }
     99% {
-        scale: 0%;
         opacity: 0%;
         display: inherit;
     }
     100% {
-        scale: 0%;
         opacity: 0%;
         display: none!important;
     }
+}
+
+#speedSelector {
+    width: 7ch;
 }

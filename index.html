@@ -42,6 +42,12 @@
 			</div>
 			<br>
 			<button onclick="toggleColapse()">Hide</button>
+			<span>| 
+				Rainbow Cycle
+				<input type="checkbox" onclick="rainbow()" id="checkbox">
+				- Speed
+				<input type="number" onchange="rainbow(true)" id="speedSelector" min="1" max="1000" disabled value="10">
+			</span>
 		</main>
 	</body>
 	<script src="script.js"></script>
